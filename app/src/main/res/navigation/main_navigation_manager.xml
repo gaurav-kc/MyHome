@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation_manager"
+    app:startDestination="@id/home_page">
+    <fragment
+        android:id="@+id/home_page"
+        android:name="com.example.myhometablet.home_page"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_home_page_to_add_event"
+            app:destination="@id/add_event"
+            app:popUpTo="@id/home_page" />
+        <action
+            android:id="@+id/action_home_page_to_addRecharge"
+            app:destination="@id/addRecharge"
+            app:popUpTo="@id/home_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_event"
+        android:name="com.example.myhometablet.add_event"
+        android:label="add_event"
+        tools:layout="@layout/fragment_add_event"/>
+    <fragment
+        android:id="@+id/addRecharge"
+        android:name="com.example.myhometablet.AddRecharge"
+        android:label="fragment_add_recharge"
+        tools:layout="@layout/fragment_add_recharge" />
+</navigation>
