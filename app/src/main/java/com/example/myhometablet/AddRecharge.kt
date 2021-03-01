@@ -41,14 +41,16 @@ class AddRecharge : Fragment() {
         rechargeVM.setUpdateOrDeleteMode(mobileRecharge)
     }
 
+    private fun onDeleteButtonClicked(mobileRecharge: Mobile_recharge){
+        rechargeVM.deleteRecharge(mobileRecharge)
+    }
+
     private fun printALl(){
         rechargeVM.recharges.observe(viewLifecycleOwner, Observer {
             Log.i("fragment", it.toString())
-            binding.RechargeListRecyclerView.adapter = RechargeRecyclerViewAdapter(it) { selectedCard: Mobile_recharge ->
-                onMobileRechargeClicked(
-                    selectedCard
-                )
-            }
+            binding.RechargeListRecyclerView.adapter = RechargeRecyclerViewAdapter(it,
+                { selected:Mobile_recharge -> onMobileRechargeClicked(selected) },
+                { selected:Mobile_recharge -> onDeleteButtonClicked(selected) })
         })
     }
 }
