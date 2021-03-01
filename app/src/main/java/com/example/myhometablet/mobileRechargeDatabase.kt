@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Mobile_recharge::class], version = 1)
+@Database(entities = [Mobile_recharge::class], version = 2)
 abstract class mobileRechargeDatabase : RoomDatabase() {
 
     abstract val mobileRechargeDAO : mobileRechargeDAO
@@ -26,4 +26,5 @@ abstract class mobileRechargeDatabase : RoomDatabase() {
             }
         }
     }
+
 }

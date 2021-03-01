@@ -7,7 +7,7 @@ import androidx.room.*
 interface mobileRechargeDAO {
     //insert update delete query to delete all and query to get all
     @Insert
-    suspend fun insertMobileRecharge(mobileRecharge: Mobile_recharge) : Long
+    suspend fun insertMobileRecharge(mobileRecharge: Mobile_recharge)
 
     @Update
     suspend fun updateMobileRecharge(mobileRecharge: Mobile_recharge)

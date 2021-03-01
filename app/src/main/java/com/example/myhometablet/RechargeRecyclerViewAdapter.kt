@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhometablet.databinding.RechargeListItemBinding
 
-class RechargeRecyclerViewAdapter(private val recharges : List<Mobile_recharge>) : RecyclerView.Adapter<MyViewHodler>() {
+class RechargeRecyclerViewAdapter(private val recharges : List<Mobile_recharge>,
+                                  private val onCardClicked : (Mobile_recharge)->Unit
+                                  ) : RecyclerView.Adapter<MyViewHodler>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
         val inflater = LayoutInflater.from(parent.context)
         val binding : RechargeListItemBinding =
@@ -15,7 +17,7 @@ class RechargeRecyclerViewAdapter(private val recharges : List<Mobile_recharge>)
     }
 
     override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
-        holder.bindRecharge(recharges[position])
+        holder.bindRecharge(recharges[position], onCardClicked)
     }
 
     override fun getItemCount(): Int {
@@ -24,10 +26,11 @@ class RechargeRecyclerViewAdapter(private val recharges : List<Mobile_recharge>)
 }
 
 class MyViewHodler(val binding: RechargeListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bindRecharge(mobileRecharge: Mobile_recharge)
+    fun bindRecharge(mobileRecharge: Mobile_recharge, onCardClicked: (Mobile_recharge) -> Unit)
     {
         binding.MobileNumberTextView.text = mobileRecharge.mobileNumber
         binding.AmountTextView.text = mobileRecharge.amount.toString()
         binding.PaidByTextView.text = mobileRecharge.paidBy
+        binding.rechargeCardView.setOnClickListener{ onCardClicked(mobileRecharge) }
     }
 }

@@ -17,10 +17,10 @@
             app:cardBackgroundColor="@color/teal_700"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
+            android:id="@+id/rechargeCardView"
             app:contentPaddingBottom="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/rechargeCardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

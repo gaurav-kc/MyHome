@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,10 +35,20 @@ class AddRecharge : Fragment() {
         printALl()
     }
 
+    //this is the on click listener callback method
+    private fun onMobileRechargeClicked(mobileRecharge: Mobile_recharge){
+        Toast.makeText(requireContext(),"Clicked on ${mobileRecharge.mobileNumber}",Toast.LENGTH_LONG).show()
+        rechargeVM.setUpdateOrDeleteMode(mobileRecharge)
+    }
+
     private fun printALl(){
         rechargeVM.recharges.observe(viewLifecycleOwner, Observer {
             Log.i("fragment", it.toString())
-            binding.RechargeListRecyclerView.adapter = RechargeRecyclerViewAdapter(it)
+            binding.RechargeListRecyclerView.adapter = RechargeRecyclerViewAdapter(it) { selectedCard: Mobile_recharge ->
+                onMobileRechargeClicked(
+                    selectedCard
+                )
+            }
         })
     }
 }

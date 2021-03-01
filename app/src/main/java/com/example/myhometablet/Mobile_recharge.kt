@@ -6,13 +6,16 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "mobile_recharge_history")
 data class Mobile_recharge(
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "row_id")
+    var entryid: Long,
+
     @ColumnInfo(name = "mobile_number")
-    val mobileNumber: String,
+    var mobileNumber: String,
 
     @ColumnInfo(name = "amount_paid")
-    val amount: Int,
+    var amount: Int,
 
     @ColumnInfo(name = "paid_by")
-    val paidBy: String
+    var paidBy: String
 )
